@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8 sembold">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo com Redirecionamento</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Lucida Calligraphy", cursive;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            color: white;
+        }
+        h2 {
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        #videoContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+        }
+        iframe {
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+        }
+        #redirectButton {
+            display: none;
+            padding: 12px 24px;
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        #redirectButton:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Assista ao vídeo até o fim</h2>
+    <div id="videoContainer">
+        <iframe id="videoPlayer" width="640" height="360" src="https://drive.google.com/file/d/1V_c894dgxMV-3bb8nfyvWk4-aJq1BHwp/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <br>
+    <button id="redirectButton" onclick="window.location.href='https://www.monicamonteiro.net/'">Acesse o site</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const iframe = document.getElementById("videoPlayer");
+            
+            setTimeout(function() {
+                const playButton = iframe.contentWindow.document.querySelector("button[aria-label='Reproduzir']");
+                if (playButton) {
+                    playButton.click();
+                }
+            }, 2000); // Ajuste o tempo se necessário
+        });
+
+        // Tempo de duração do vídeo (ajuste manualmente conforme o vídeo)
+        const videoDuration = 30; // em segundos
+
+        setTimeout(function() {
+            document.getElementById('redirectButton').style.display = 'inline-block';
+        }, videoDuration * 1000);
+    </script>
+</body>
+</html>
